@@ -11,9 +11,9 @@ int main() {
         printf("Bem vindo! \n");
         printf("------------------\n");
         printf("0 - Sair\n");
-        printf("1 - Criar conta\n");
-        printf("2 - Apagar cliente \n");
-        printf("3 - Listar cliente\n");
+        printf("1 - Criar tarefa\n");
+        printf("2 - Apagar tarefa\n");
+        printf("3 - Listar tarefas\n");
         printf("4 - Salvar em bin\n");
         printf("5 - Carregar em bin\n");
         printf("6 - Salvar em txt\n");
