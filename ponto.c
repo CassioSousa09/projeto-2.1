@@ -32,6 +32,9 @@ ERROS criar(Tarefa tarefas[], int *pos) {
 }
 
 
+
+
+
 ERROS deletar(Tarefa tarefas[], int *pos){
   // teste se existem tarefas
   if(*pos == 0)
@@ -132,8 +135,51 @@ ERROS carregar(Tarefa tarefas[], int *pos){
 
 
 
+ERROS gravar(Tarefa tarefas[], int *pos) {
+    FILE *f = fopen("arquivo.txt", "w");
+    if (f == NULL)
+        return ABRIR;
+
+    for (int i = 0; i < *pos; i++) {
+        fprintf(f, "Prioridade: %d\n", tarefas[i].prioridade);
+        fprintf(f, "Categoria: %s\n", tarefas[i].categoria);
+        fprintf(f, "Descrição: %s\n", tarefas[i].descricao);
+        fprintf(f, "-------------------------\n");
+    }
+
+    if (fclose(f) != 0) { 
+        return FECHAR; 
+    }
+
+    return OK;
+}
+
+ERROS exportar(Tarefa tarefas[], int *pos) {
+    char nomeArquivo[100];
+    printf("Digite o nome do arquivo que esta em bin para exportar para  txt): ");
+    fgets(nomeArquivo, sizeof(nomeArquivo), stdin);
+    if (nomeArquivo[strlen(nomeArquivo) - 1] == '\n') {
+        nomeArquivo[strlen(nomeArquivo) - 1] = '\0';
+    }
+
+    FILE *f = fopen(nomeArquivo, "w");
+    if (f == NULL)
+        return ABRIR;
+
+    for (int i = 0; i < *pos; i++) {
+        fprintf(f, "Prioridade: %d, Categoria: %s, Descrição: %s\n", tarefas[i].prioridade, tarefas[i].categoria, tarefas[i].descricao);
+    }
+
+    if (fclose(f) != 0) {
+        return FECHAR;
+    }
+
+    return OK;
+}
 
 
 
-
-
+void clearBuffer(){
+  int c;
+  while ((c = getchar()) != '\n' && c != EOF);
+}
