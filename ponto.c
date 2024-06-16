@@ -32,6 +32,9 @@ ERROS criar(Tarefa tarefas[], int *pos) {
 }
 
 
+
+
+
 ERROS deletar(Tarefa tarefas[], int *pos){
   // teste se existem tarefas
   if(*pos == 0)
@@ -128,6 +131,10 @@ ERROS carregar(Tarefa tarefas[], int *pos){
 
 }
 
+
+
+
+
 ERROS gravar(Tarefa tarefas[], int *pos) {
     FILE *f = fopen("arquivo.txt", "w");
     if (f == NULL)
@@ -176,11 +183,3 @@ void clearBuffer(){
   int c;
   while ((c = getchar()) != '\n' && c != EOF);
 }
-
-
-
-
-
-
-
-
